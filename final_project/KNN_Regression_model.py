@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsRegressor
 #loading dataset
 df= pd.read_csv("student-mat.csv")
 
@@ -31,7 +32,7 @@ y=df["G3"] #target variable (final grade)
 
 
 #Indentifying categorical columns manually
-categorical_cols= ['Mjob', 'Fjob', 'address', "Pstatus", "famsup", "internet"]
+categorical_cols= ['Mjob', 'Fjob', 'address', "Pstatus", "famsup", "internet", "famsize"]
 
 #Apply one-hot encoding:
 #   this converts categorical values into binary (0/1) columns
@@ -64,4 +65,8 @@ x_train=scaler.fit_transform(x_train)
 #apply the same transformation onto the test set
 #(don't fit again on test data)
 x_test=scaler.transform(x_test)
+
+#train KNN model
+knn= KNeighborsRegressor(n_neighbors=5)
+knn.fit(x_train,y_train)
 
