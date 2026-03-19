@@ -66,7 +66,16 @@ x_train=scaler.fit_transform(x_train)
 #(don't fit again on test data)
 x_test=scaler.transform(x_test)
 
+#----------------------------------------------
 #train KNN model
+#---------------------------------------------
+
 knn= KNeighborsRegressor(n_neighbors=5)
 knn.fit(x_train,y_train)
+
+#--------------------------------------------
+#make predictions
+#---------------------------------------------
+y_pred=knn.predict(x_test)
+
 
