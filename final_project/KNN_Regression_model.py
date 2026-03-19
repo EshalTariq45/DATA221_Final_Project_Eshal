@@ -9,7 +9,11 @@ df= pd.read_csv("student-mat.csv")
 df=df.drop(columns=["G1", "G2"])
 
 #seperating features and targets
-#dropping column G3 from x, otherwise our model would 'see' the answer while
-#we're training it.
-x= df.drop("G3", axis=1) #features only, axis=1: operating along columns instead of rows
+
+#Selecting features
+selected_features= ["Medu", "Fedu", "Mjob", "Fjob", #Parents background
+                    "adress", "Pstatus", "traveltime", "internet", #Living conditions
+                    'famsup', "famsize", "famrel"] #Family demographics
 y=df["G3"] #target
+
+
