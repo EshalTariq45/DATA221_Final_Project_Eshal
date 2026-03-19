@@ -12,8 +12,10 @@ df=df.drop(columns=["G1", "G2"])
 
 #Selecting features
 selected_features= ["Medu", "Fedu", "Mjob", "Fjob", #Parents background
-                    "adress", "Pstatus", "traveltime", "internet", #Living conditions
+                    "address", "Pstatus", "traveltime", "internet", #Living conditions
                     'famsup', "famsize", "famrel"] #Family demographics
+x=df[selected_features]
 y=df["G3"] #target
+
 
 
